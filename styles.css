@@ -548,9 +548,9 @@ header .social-icon:hover {
     }
 } 
 
-/* Ensure main content has proper spacing */
+/* Ensure main content has enough height for scrolling */
 main {
-    min-height: 200vh;
+    min-height: 300vh;
     position: relative;
     z-index: 1;
     padding-bottom: 100vh;
@@ -800,7 +800,7 @@ main {
         0 0 40px rgba(255, 255, 255, 0.8),
         0 0 70px rgba(255, 255, 255, 0.6);
     animation: text-glow 2s infinite;
-    margin-top: 150vh;
+    margin-top: 250vh;
     padding-bottom: 4rem;
 }
 
