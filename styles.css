@@ -6,9 +6,8 @@
 }
 
 :root {
-    --neon-blue: #00f3ff;
-    --neon-purple: #ff00ff;
-    --neon-green: #39ff14;
+    --neon-red: #ff0000;
+    --neon-dark-red: #990000;
     --dark-bg: #0a0a0a;
 }
 
@@ -22,12 +21,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--neon-blue);
+    background: var(--neon-red);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--neon-purple);
+    background: var(--neon-dark-red);
 }
 
 body {
@@ -63,16 +62,16 @@ body {
 /* Neon Text Animation */
 @keyframes neon-pulse {
     0%, 100% {
-        text-shadow: 0 0 5px var(--neon-blue),
-                     0 0 10px var(--neon-blue),
-                     0 0 20px var(--neon-blue),
-                     0 0 40px var(--neon-blue);
+        text-shadow: 0 0 5px var(--neon-red),
+                     0 0 10px var(--neon-red),
+                     0 0 20px var(--neon-red),
+                     0 0 40px var(--neon-red);
     }
     50% {
-        text-shadow: 0 0 10px var(--neon-purple),
-                     0 0 20px var(--neon-purple),
-                     0 0 40px var(--neon-purple),
-                     0 0 80px var(--neon-purple);
+        text-shadow: 0 0 10px var(--neon-dark-red),
+                     0 0 20px var(--neon-dark-red),
+                     0 0 40px var(--neon-dark-red),
+                     0 0 80px var(--neon-dark-red);
     }
 }
 
@@ -84,7 +83,7 @@ header {
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--neon-blue);
+    border-bottom: 2px solid var(--neon-red);
     transform-style: preserve-3d;
 }
 
@@ -95,8 +94,8 @@ header::before {
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--neon-blue);
-    animation: neon-pulse 2s infinite;
+    background: var(--neon-red);
+    animation: red-glow 2s infinite;
 }
 
 nav {
@@ -179,14 +178,14 @@ nav {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--neon-blue);
+    background: var(--neon-red);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
 .nav-links li a:hover {
-    color: var(--neon-blue);
-    text-shadow: 0 0 10px var(--neon-blue);
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--neon-red);
 }
 
 .nav-links li a:hover::before {
@@ -311,7 +310,7 @@ nav {
 
 .music-card:hover {
     transform: translateZ(20px) rotateX(10deg);
-    box-shadow: 0 0 30px var(--neon-blue);
+    box-shadow: 0 0 30px var(--neon-red);
 }
 
 .music-card::before {
@@ -351,8 +350,8 @@ nav {
     width: 100%;
     padding: 1rem;
     background: transparent;
-    border: 2px solid var(--neon-blue);
-    color: var(--neon-blue);
+    border: 2px solid var(--neon-red);
+    color: var(--neon-red);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -364,9 +363,9 @@ nav {
 }
 
 .play-btn:hover {
-    background: var(--neon-blue);
+    background: var(--neon-red);
     color: var(--dark-bg);
-    box-shadow: 0 0 20px var(--neon-blue);
+    box-shadow: 0 0 20px var(--neon-red);
 }
 
 .play-btn i {
@@ -394,7 +393,7 @@ nav {
     left: -10px;
     right: -10px;
     bottom: -10px;
-    border: 2px solid var(--neon-blue);
+    border: 2px solid var(--neon-red);
     border-radius: 15px;
     animation: border-pulse 2s infinite;
     pointer-events: none;
@@ -402,12 +401,12 @@ nav {
 
 @keyframes border-pulse {
     0%, 100% {
-        border-color: var(--neon-blue);
-        box-shadow: 0 0 20px var(--neon-blue);
+        border-color: var(--neon-red);
+        box-shadow: 0 0 20px var(--neon-red);
     }
     50% {
-        border-color: var(--neon-purple);
-        box-shadow: 0 0 20px var(--neon-purple);
+        border-color: var(--neon-dark-red);
+        box-shadow: 0 0 20px var(--neon-dark-red);
     }
 }
 
@@ -458,7 +457,7 @@ nav {
 }
 
 .social-icon:hover {
-    color: var(--neon-blue);
+    color: var(--neon-red);
     transform: translateY(-5px);
 }
 
@@ -484,7 +483,7 @@ footer::before {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-blue));
+    background: linear-gradient(90deg, var(--neon-red), var(--neon-dark-red), var(--neon-red));
     animation: border-flow 5s linear infinite;
 }
 
@@ -552,27 +551,67 @@ footer::before {
 /* Red glow animation */
 @keyframes red-glow {
     0%, 100% {
-        color: #ffffff;
-        text-shadow: 0 0 5px #ff0000,
-                     0 0 10px #ff0000,
-                     0 0 15px #ff0000;
+        box-shadow: 0 0 5px var(--neon-red),
+                   0 0 10px var(--neon-red),
+                   0 0 20px var(--neon-red);
+        background: var(--neon-red);
     }
     50% {
-        color: #ffffff;
-        text-shadow: 0 0 7px #ff0000,
-                     0 0 12px #ff0000,
-                     0 0 17px #ff0000;
+        box-shadow: 0 0 10px var(--neon-dark-red),
+                   0 0 20px var(--neon-dark-red),
+                   0 0 40px var(--neon-dark-red);
+        background: var(--neon-dark-red);
     }
 }
 
 /* Bat animation */
 @keyframes fly-bat {
     0% {
-        transform: translate(0, 0) rotate(0deg);
+        transform: translate(0, 0) rotate(var(--r));
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
         opacity: 1;
     }
     100% {
-        transform: translate(var(--x), var(--y)) rotate(var(--r));
+        transform: translate(var(--x), var(--y)) rotate(calc(var(--r) + 360deg));
+        opacity: 0;
+    }
+}
+
+.bat-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.bat {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: fly-random-bat 10s linear infinite;
+    opacity: 0;
+}
+
+@keyframes fly-random-bat {
+    0% {
+        transform: translate(random(-100%, 100%), random(-100%, 100%)) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(random(-100%, 100%), random(-100%, 100%)) rotate(360deg);
         opacity: 0;
     }
 } 

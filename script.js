@@ -208,4 +208,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const player = new MusicPlayer();
     };
     document.body.appendChild(script);
+});
+
+// Bat Animation
+function initBats() {
+    const bats = document.querySelectorAll('.bat');
+    
+    bats.forEach(bat => {
+        // Set random initial positions
+        const startX = Math.random() * window.innerWidth;
+        const startY = Math.random() * window.innerHeight;
+        bat.style.left = `${startX}px`;
+        bat.style.top = `${startY}px`;
+        
+        // Set random animation delays
+        bat.style.animationDelay = `${Math.random() * 5}s`;
+        
+        // Add random movement
+        setInterval(() => {
+            const newX = Math.random() * window.innerWidth;
+            const newY = Math.random() * window.innerHeight;
+            bat.style.transition = 'all 5s ease-in-out';
+            bat.style.left = `${newX}px`;
+            bat.style.top = `${newY}px`;
+            bat.style.transform = `rotate(${Math.random() * 360}deg)`;
+        }, 5000 + Math.random() * 2000);
+    });
+}
+
+// Initialize bats when the document is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initBats();
+    // ... existing code ...
 }); 
