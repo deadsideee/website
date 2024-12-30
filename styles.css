@@ -406,33 +406,9 @@ nav {
     position: relative;
 }
 
-.soundcloud-player::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border: 2px solid var(--neon-red);
-    border-radius: 15px;
-    animation: border-pulse 2s infinite;
-    pointer-events: none;
-}
-
-@keyframes border-pulse {
-    0%, 100% {
-        border-color: var(--neon-red);
-        box-shadow: 0 0 20px var(--neon-red);
-    }
-    50% {
-        border-color: var(--neon-dark-red);
-        box-shadow: 0 0 20px var(--neon-dark-red);
-    }
-}
-
 .soundcloud-player iframe {
     border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
 }
 
