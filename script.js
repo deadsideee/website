@@ -165,21 +165,15 @@ class MusicPlayer {
         // Initialize SoundCloud Widget API
         this.widget = SC.Widget(document.querySelector('.soundcloud-player iframe'));
         this.initializePlayer();
-        this.initializeControls();
+        this.initializeVolumeControl();
     }
 
     initializePlayer() {
         document.querySelectorAll('.play-btn').forEach(button => {
             button.addEventListener('click', () => {
-                const card = button.closest('.music-card');
+                const card = button.closest('.track-card');
                 const wasPlaying = this.isPlaying;
                 
-                // Reset all buttons
-                document.querySelectorAll('.play-btn').forEach(btn => {
-                    btn.innerHTML = '<i class="fas fa-play"></i> Play Now';
-                    btn.closest('.music-card').classList.remove('playing');
-                });
-
                 if (!wasPlaying || this.currentCard !== card) {
                     this.currentCard = card;
                     button.innerHTML = '<i class="fas fa-pause"></i> Pause';
@@ -194,77 +188,64 @@ class MusicPlayer {
                     }
                 } else {
                     this.isPlaying = false;
+                    button.innerHTML = '<i class="fas fa-play"></i> Play Now';
+                    card.classList.remove('playing');
                     this.widget.pause();
                 }
             });
         });
     }
 
-    initializeControls() {
-        const playPauseBtn = document.querySelector('.play-pause-btn');
+    initializeVolumeControl() {
         const volumeSlider = document.querySelector('.volume-slider');
+        const volumeControl = document.querySelector('.volume-control');
         const volumeIcon = document.querySelector('.volume-icon');
 
         // Initialize volume slider
         volumeSlider.value = 100;
+        this.updateVolumeDisplay(100);
 
-        // Volume control
+        // Volume slider change
         volumeSlider.addEventListener('input', (e) => {
-            const volume = e.target.value / 100;
-            this.widget.setVolume(volume);
-            this.updateVolumeIcon(volume);
+            const value = e.target.value;
+            this.updateVolumeDisplay(value);
+            this.widget.setVolume(value / 100);
         });
 
-        // Volume icon click to mute/unmute
+        // Volume icon click (mute/unmute)
         volumeIcon.addEventListener('click', () => {
             if (volumeSlider.value > 0) {
-                this.lastVolume = volumeSlider.value / 100;
+                this.lastVolume = volumeSlider.value;
                 volumeSlider.value = 0;
-                this.widget.setVolume(0);
-                this.updateVolumeIcon(0);
             } else {
-                volumeSlider.value = this.lastVolume * 100;
-                this.widget.setVolume(this.lastVolume);
-                this.updateVolumeIcon(this.lastVolume);
+                volumeSlider.value = this.lastVolume;
             }
-        });
-
-        // Play/Pause control
-        playPauseBtn.addEventListener('click', () => {
-            this.widget.toggle();
-            this.isPlaying = !this.isPlaying;
-            playPauseBtn.innerHTML = this.isPlaying ? 
-                '<i class="fas fa-pause"></i>' : 
-                '<i class="fas fa-play"></i>';
+            volumeSlider.dispatchEvent(new Event('input'));
         });
 
         // Initialize widget events
         this.widget.bind(SC.Widget.Events.READY, () => {
             this.widget.getVolume(volume => {
                 volumeSlider.value = volume * 100;
-                this.updateVolumeIcon(volume);
+                this.updateVolumeDisplay(volumeSlider.value);
             });
-        });
-
-        this.widget.bind(SC.Widget.Events.PLAY, () => {
-            this.isPlaying = true;
-            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        });
-
-        this.widget.bind(SC.Widget.Events.PAUSE, () => {
-            this.isPlaying = false;
-            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
         });
     }
 
-    updateVolumeIcon(volume) {
+    updateVolumeDisplay(value) {
+        const volumeControl = document.querySelector('.volume-control');
         const volumeIcon = document.querySelector('.volume-icon');
-        if (volume === 0) {
-            volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
-        } else if (volume < 0.5) {
-            volumeIcon.innerHTML = '<i class="fas fa-volume-down"></i>';
+        
+        // Update volume percentage display
+        volumeControl.setAttribute('data-volume', `${value}%`);
+        
+        // Update volume icon
+        if (value == 0) {
+            volumeIcon.className = 'fas fa-volume-mute volume-icon';
+        } else if (value < 50) {
+            volumeIcon.className = 'fas fa-volume-down volume-icon';
         } else {
-            volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
+            volumeIcon.className = 'fas fa-volume-up volume-icon';
         }
     }
 }
@@ -309,51 +290,4 @@ function initBats() {
             bat.style.transform = `rotate(${Math.random() * 360}deg)`;
         }, 5000 + Math.random() * 2000);
     });
-}
-
-// Volume control functionality
-const volumeSlider = document.querySelector('.volume-slider');
-const volumeControl = document.querySelector('.volume-control');
-const volumeIcon = document.querySelector('.volume-icon');
-let lastVolume = 100;
-
-// Update volume display and icon
-function updateVolumeDisplay(value) {
-    volumeControl.setAttribute('data-volume', `${value}%`);
-    
-    // Update volume icon based on level
-    if (value === 0) {
-        volumeIcon.className = 'fas fa-volume-mute volume-icon';
-    } else if (value < 50) {
-        volumeIcon.className = 'fas fa-volume-down volume-icon';
-    } else {
-        volumeIcon.className = 'fas fa-volume-up volume-icon';
-    }
-}
-
-// Initialize volume display
-updateVolumeDisplay(volumeSlider.value);
-
-// Handle volume slider change
-volumeSlider.addEventListener('input', (e) => {
-    const value = e.target.value;
-    updateVolumeDisplay(value);
-    
-    // Update SoundCloud player volume if it exists
-    if (window.scPlayer) {
-        window.scPlayer.setVolume(value / 100);
-    }
-});
-
-// Handle volume icon click (mute/unmute)
-volumeIcon.addEventListener('click', () => {
-    if (volumeSlider.value > 0) {
-        lastVolume = volumeSlider.value;
-        volumeSlider.value = 0;
-    } else {
-        volumeSlider.value = lastVolume;
-    }
-    
-    // Trigger input event to update display and player
-    volumeSlider.dispatchEvent(new Event('input'));
-}); 
+} 
