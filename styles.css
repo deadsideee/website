@@ -112,10 +112,31 @@ nav {
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
-    animation: red-glow 2s infinite;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    text-shadow: 
+        0 0 10px var(--neon-red),
+        0 0 20px var(--neon-red),
+        0 0 30px var(--neon-red),
+        0 0 40px var(--neon-red);
+    animation: logo-glow 2s infinite;
+}
+
+@keyframes logo-glow {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px var(--neon-red),
+            0 0 20px var(--neon-red),
+            0 0 30px var(--neon-red);
+    }
+    50% {
+        text-shadow: 
+            0 0 20px var(--neon-red),
+            0 0 30px var(--neon-red),
+            0 0 40px var(--neon-red),
+            0 0 50px var(--neon-red);
+    }
 }
 
 .logo::before,
