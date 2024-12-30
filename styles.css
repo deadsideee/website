@@ -42,6 +42,21 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--neon-red);
 }
 
 /* Social Links in Header */
