@@ -35,6 +35,13 @@ body {
     color: #fff;
     background: var(--dark-bg);
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 /* Glitch Animation */
@@ -496,6 +503,7 @@ footer {
     position: relative;
     overflow: hidden;
     border-top: 2px solid var(--neon-red);
+    flex-shrink: 0;
 }
 
 footer::before {
