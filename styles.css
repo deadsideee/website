@@ -536,3 +536,7 @@ main {
         max-width: 300px;
     }
 } 
+
+.music-section, .music-grid, .music-card, .music-img, .card-content, .track-stats, .section-title {
+    display: none;
+} 
