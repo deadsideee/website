@@ -169,31 +169,42 @@ class MusicPlayer {
     }
 
     initializePlayer() {
-        document.querySelectorAll('.play-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const card = button.closest('.track-card');
-                const wasPlaying = this.isPlaying;
-                
-                if (!wasPlaying || this.currentCard !== card) {
-                    this.currentCard = card;
-                    button.innerHTML = '<i class="fas fa-pause"></i> Pause';
-                    card.classList.add('playing');
+        const vinylRecord = document.getElementById('vinyl-player');
+        if (vinylRecord) {
+            vinylRecord.addEventListener('click', () => {
+                if (!this.isPlaying) {
+                    this.widget.load('https://soundcloud.com/deadsidee/bam', {
+                        auto_play: true,
+                        show_artwork: false,
+                        show_comments: false,
+                        show_playcount: false,
+                        show_user: false,
+                        visual: false
+                    });
                     this.isPlaying = true;
-                    
-                    // Play the SoundCloud track
-                    if (button.dataset.track === 'flood-my-wrist') {
-                        this.widget.load('https://soundcloud.com/deadsidee/flood-my-wrist', {
-                            auto_play: true
-                        });
-                    }
+                    vinylRecord.style.animation = 'spin 2s linear infinite';
                 } else {
-                    this.isPlaying = false;
-                    button.innerHTML = '<i class="fas fa-play"></i> Play Now';
-                    card.classList.remove('playing');
                     this.widget.pause();
+                    this.isPlaying = false;
+                    vinylRecord.style.animation = 'none';
                 }
             });
-        });
+
+            // Add hover effect
+            vinylRecord.addEventListener('mouseenter', () => {
+                if (!this.isPlaying) {
+                    vinylRecord.style.transform = 'scale(1.05)';
+                    vinylRecord.style.boxShadow = '0 0 30px rgba(255, 0, 0, 0.4), 0 0 60px rgba(255, 0, 0, 0.2)';
+                }
+            });
+
+            vinylRecord.addEventListener('mouseleave', () => {
+                if (!this.isPlaying) {
+                    vinylRecord.style.transform = 'scale(1)';
+                    vinylRecord.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.6)';
+                }
+            });
+        }
     }
 
     initializeVolumeControl() {
@@ -205,27 +216,14 @@ class MusicPlayer {
         volumeSlider.value = 100;
         this.updateVolumeDisplay(100);
         
-        // Set initial volume to maximum with extreme amplification
-        this.widget.setVolume(100); // Maximum possible amplification
+        // Set initial volume to maximum
+        this.widget.setVolume(100);
 
         // Volume slider change
         volumeSlider.addEventListener('input', (e) => {
             const value = parseInt(e.target.value);
             this.updateVolumeDisplay(value);
-            
-            // Super amplification scaling
-            const amplifiedVolume = Math.pow(value / 100, 0.3) * 100; // Exponential scaling up to 10000% volume
-            this.widget.setVolume(amplifiedVolume);
-
-            // Force maximum volume through multiple calls when at 100%
-            if (value === 100) {
-                // Multiple volume boost attempts for maximum volume
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => {
-                        this.widget.setVolume(100);
-                    }, i * 100);
-                }
-            }
+            this.widget.setVolume(value);
         });
 
         // Volume icon click (mute/unmute)
@@ -241,32 +239,18 @@ class MusicPlayer {
 
         // Initialize widget events
         this.widget.bind(SC.Widget.Events.READY, () => {
-            // Set initial volume to maximum
             this.widget.setVolume(100);
             volumeSlider.value = 100;
             this.updateVolumeDisplay(100);
+        });
 
-            // Force maximum volume on track load and during playback
-            this.widget.bind(SC.Widget.Events.PLAY, () => {
-                if (volumeSlider.value === 100) {
-                    // Multiple volume boost attempts
-                    for (let i = 0; i < 5; i++) {
-                        setTimeout(() => {
-                            this.widget.setVolume(100);
-                        }, i * 100);
-                    }
-                } else if (volumeSlider.value > 0) {
-                    const amplifiedVolume = Math.pow(volumeSlider.value / 100, 0.3) * 100;
-                    this.widget.setVolume(amplifiedVolume);
-                }
-            });
-
-            // Maintain maximum volume during playback
-            this.widget.bind(SC.Widget.Events.PLAY_PROGRESS, () => {
-                if (volumeSlider.value === 100) {
-                    this.widget.setVolume(100);
-                }
-            });
+        // Handle track finish
+        this.widget.bind(SC.Widget.Events.FINISH, () => {
+            const vinylRecord = document.getElementById('vinyl-player');
+            if (vinylRecord) {
+                vinylRecord.style.animation = 'none';
+                this.isPlaying = false;
+            }
         });
     }
 
