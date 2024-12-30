@@ -205,17 +205,24 @@ class MusicPlayer {
         volumeSlider.value = 100;
         this.updateVolumeDisplay(100);
         
-        // Set initial volume to maximum with amplification
-        this.widget.setVolume(2); // Amplify the volume beyond default maximum
+        // Set initial volume to maximum with maximum amplification
+        this.widget.setVolume(5); // Maximum amplification
 
         // Volume slider change
         volumeSlider.addEventListener('input', (e) => {
             const value = parseInt(e.target.value);
             this.updateVolumeDisplay(value);
             
-            // Linear scaling with amplification for louder volume
-            const amplifiedVolume = (value / 100) * 2; // Scale up to 200% volume
+            // Maximum amplification scaling
+            const amplifiedVolume = (value / 100) * 5; // Scale up to 500% volume
             this.widget.setVolume(amplifiedVolume);
+
+            // Force volume boost through the widget API
+            this.widget.getVolume(currentVol => {
+                if (currentVol < amplifiedVolume) {
+                    this.widget.setVolume(amplifiedVolume);
+                }
+            });
         });
 
         // Volume icon click (mute/unmute)
@@ -232,9 +239,17 @@ class MusicPlayer {
         // Initialize widget events
         this.widget.bind(SC.Widget.Events.READY, () => {
             // Set initial volume to maximum with amplification
-            this.widget.setVolume(2);
+            this.widget.setVolume(5);
             volumeSlider.value = 100;
             this.updateVolumeDisplay(100);
+
+            // Force maximum volume on track load
+            this.widget.bind(SC.Widget.Events.PLAY, () => {
+                if (volumeSlider.value > 0) {
+                    const amplifiedVolume = (volumeSlider.value / 100) * 5;
+                    this.widget.setVolume(amplifiedVolume);
+                }
+            });
         });
     }
 
