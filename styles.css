@@ -292,69 +292,90 @@ header .social-icon:hover {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     padding: 8px 12px;
     border-radius: 20px;
     position: relative;
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.2),
+        inset 0 0 15px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .volume-slider {
     flex: 1;
     -webkit-appearance: none;
-    height: 6px;
-    border-radius: 3px;
-    background: linear-gradient(to right, var(--neon-red) 0%, var(--neon-red) 100%, rgba(255, 255, 255, 0.2) 100%);
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #fff 0%, #fff 100%, rgba(255, 255, 255, 0.3) 100%);
     outline: none;
     transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .volume-slider:hover {
-    height: 8px;
+    height: 10px;
+    box-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.3);
 }
 
 .volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid var(--neon-red);
     box-shadow: 
-        0 0 10px var(--neon-red),
-        0 0 20px rgba(255, 0, 0, 0.5);
+        0 0 10px #fff,
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 30px rgba(255, 255, 255, 0.4);
 }
 
 .volume-slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
-    background: var(--neon-red);
-}
-
-.volume-slider::-webkit-slider-thumb:active {
-    transform: scale(1.1);
+    background: #fff;
+    box-shadow: 
+        0 0 15px #fff,
+        0 0 30px rgba(255, 255, 255, 0.8),
+        0 0 45px rgba(255, 255, 255, 0.4);
 }
 
 .volume-icon {
-    color: var(--neon-red);
-    font-size: 1.2rem;
+    color: #fff;
+    font-size: 1.3rem;
     transition: all 0.3s ease;
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .volume-icon:hover {
     color: #fff;
-    text-shadow: 0 0 10px var(--neon-red);
+    transform: scale(1.1);
+    text-shadow: 
+        0 0 15px #fff,
+        0 0 30px rgba(255, 255, 255, 0.8),
+        0 0 45px rgba(255, 255, 255, 0.4);
 }
 
 /* Show volume percentage */
 .volume-control::after {
     content: attr(data-volume);
     position: absolute;
-    right: -40px;
-    color: var(--neon-red);
-    font-size: 0.9rem;
-    min-width: 35px;
+    right: -45px;
+    color: #fff;
+    font-size: 1rem;
+    min-width: 40px;
     text-align: left;
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px rgba(255, 255, 255, 0.8);
+    font-weight: 500;
 }
 
 /* Latest Track Section */
