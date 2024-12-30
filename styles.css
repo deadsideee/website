@@ -274,17 +274,7 @@ header .social-icon:hover {
 }
 
 .play-pause-btn {
-    background: transparent;
-    border: none;
-    color: var(--neon-red);
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-}
-
-.play-pause-btn:hover {
-    color: #fff;
-    text-shadow: 0 0 10px var(--neon-red);
+    display: none;
 }
 
 .volume-control {
