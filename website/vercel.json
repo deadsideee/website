@@ -10,12 +10,16 @@
         {
             "src": "/styles.css",
             "headers": {
-                "Content-Type": "text/css"
+                "Content-Type": "text/css",
+                "Cache-Control": "no-cache, no-store, must-revalidate"
             },
             "dest": "/styles.css"
         },
         {
             "src": "/(.*)",
+            "headers": {
+                "Cache-Control": "no-cache, no-store, must-revalidate"
+            },
             "dest": "/$1"
         }
     ]
