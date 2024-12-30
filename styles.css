@@ -489,12 +489,13 @@ nav {
 
 /* Footer */
 footer {
-    background: #000;
+    background: rgba(0, 0, 0, 0.95);
     color: #fff;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
     position: relative;
     overflow: hidden;
+    border-top: 2px solid var(--neon-red);
 }
 
 footer::before {
@@ -504,16 +505,57 @@ footer::before {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, var(--neon-red), var(--neon-dark-red), var(--neon-red));
-    animation: border-flow 5s linear infinite;
+    background: var(--neon-red);
+    animation: red-glow 2s infinite;
 }
 
-@keyframes border-flow {
-    0% {
-        background-position: 0% 0%;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-social-icon {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-social-icon:hover {
+    color: var(--neon-red);
+    transform: translateY(-3px);
+    text-shadow: 
+        0 0 10px var(--neon-red),
+        0 0 20px var(--neon-red),
+        0 0 30px var(--neon-red);
+}
+
+.footer-text {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    animation: footer-text-glow 2s infinite;
+}
+
+@keyframes footer-text-glow {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px var(--neon-red),
+            0 0 10px var(--neon-red);
     }
-    100% {
-        background-position: 200% 0%;
+    50% {
+        text-shadow: 
+            0 0 10px var(--neon-red),
+            0 0 20px var(--neon-red);
     }
 }
 
