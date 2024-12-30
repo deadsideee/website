@@ -781,3 +781,31 @@ main {
     background: none;
     box-shadow: none;
 } 
+
+.about-text.emotion {
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #fff,
+        0 0 40px rgba(255, 255, 255, 0.8),
+        0 0 70px rgba(255, 255, 255, 0.6);
+    animation: text-glow 2s infinite;
+}
+
+.about-text.music {
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+} 
