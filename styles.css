@@ -540,3 +540,111 @@ main {
 .music-section, .music-grid, .music-card, .music-img, .card-content, .track-stats, .section-title {
     display: none;
 } 
+
+/* About Page Styles */
+.about-page {
+    min-height: 100vh;
+    padding: 8rem 2rem 4rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-title {
+    font-size: 3rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    animation: logo-glow 2s infinite;
+}
+
+.about-content-grid {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.about-image-container {
+    flex: 0 0 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 0 20px rgba(255, 0, 0, 0.3),
+        0 0 40px rgba(255, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.about-profile-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: translateZ(20px);
+}
+
+.about-text-content {
+    flex: 1;
+    max-width: 600px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-section-block {
+    margin-bottom: 2.5rem;
+}
+
+.about-section-block:last-child {
+    margin-bottom: 0;
+}
+
+.about-subtitle {
+    font-size: 2rem;
+    color: var(--neon-red);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.about-text-content p {
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile styles for about page */
+@media (max-width: 768px) {
+    .about-content-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .about-image-container {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .about-text-content {
+        padding: 1.5rem;
+    }
+
+    .about-subtitle {
+        font-size: 1.8rem;
+    }
+
+    .about-text-content p {
+        font-size: 1.1rem;
+    }
+} 
