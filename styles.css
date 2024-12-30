@@ -320,3 +320,146 @@ header .social-icon:hover {
     color: var(--neon-red);
     font-size: 1rem;
 } 
+
+/* Latest Track Section */
+.latest-track {
+    padding: 4rem 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    margin-top: 4rem;
+}
+
+.latest-track-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.latest-track-title {
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #ff0000,
+        0 0 42px #ff0000;
+}
+
+.track-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.track-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.4);
+}
+
+.track-artwork {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.track-artwork img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.track-artwork .play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.track-artwork .play-overlay i {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+.track-card:hover .play-overlay {
+    opacity: 1;
+}
+
+.track-info {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.track-info h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.track-info p {
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.track-info .play-btn {
+    background: transparent;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: fit-content;
+}
+
+.track-info .play-btn:hover {
+    background: #ff0000;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+/* Mobile Styles for Latest Track */
+@media (max-width: 768px) {
+    .track-card {
+        flex-direction: column;
+        max-width: 300px;
+    }
+
+    .track-artwork {
+        width: 100%;
+        height: 300px;
+    }
+
+    .track-info {
+        text-align: center;
+        align-items: center;
+    }
+} 
