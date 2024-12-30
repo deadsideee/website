@@ -90,7 +90,6 @@ header {
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    transform-style: preserve-3d;
 }
 
 header::before {
@@ -104,6 +103,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    position: relative;
 }
 
 .logo {
@@ -953,7 +953,11 @@ header .social-links {
     display: flex;
     gap: 1.5rem;
     align-items: center;
-    margin-left: auto;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
 }
 
 header .social-icon {
@@ -968,6 +972,8 @@ header .social-icon {
     height: 40px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1002;
 }
 
 header .social-icon:hover {
@@ -976,7 +982,13 @@ header .social-icon:hover {
     text-shadow: 
         0 0 10px var(--neon-red),
         0 0 20px var(--neon-red);
-    background: rgba(255, 0, 0, 0.1);
+    background: rgba(255, 0, 0, 0.2);
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+    display: none;
+    z-index: 1003;
 }
 
 /* Mobile responsive styles */
@@ -985,41 +997,21 @@ header .social-icon:hover {
         padding: 0 1rem;
     }
 
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.5s ease;
-        margin: 0;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    .nav-links li {
-        margin: 1.5rem 0;
+    .menu-btn {
+        display: block;
+        margin-left: 1rem;
     }
 
     header .social-links {
         position: fixed;
         bottom: 2rem;
         left: 50%;
+        right: auto;
+        top: auto;
         transform: translateX(-50%);
         background: rgba(0, 0, 0, 0.8);
         padding: 1rem;
         border-radius: 2rem;
         backdrop-filter: blur(10px);
-    }
-
-    .menu-btn {
-        display: block;
-        margin-left: 1rem;
     }
 } 
