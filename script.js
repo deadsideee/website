@@ -160,10 +160,12 @@ class MusicPlayer {
     constructor() {
         this.currentSongIndex = 0;
         this.isPlaying = false;
-        this.initializePlayer();
+        this.lastVolume = 1;
         
         // Initialize SoundCloud Widget API
         this.widget = SC.Widget(document.querySelector('.soundcloud-player iframe'));
+        this.initializePlayer();
+        this.initializeControls();
     }
 
     initializePlayer() {
@@ -197,6 +199,74 @@ class MusicPlayer {
             });
         });
     }
+
+    initializeControls() {
+        const playPauseBtn = document.querySelector('.play-pause-btn');
+        const volumeSlider = document.querySelector('.volume-slider');
+        const volumeIcon = document.querySelector('.volume-icon');
+
+        // Initialize volume slider
+        volumeSlider.value = 100;
+
+        // Volume control
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value / 100;
+            this.widget.setVolume(volume);
+            this.updateVolumeIcon(volume);
+        });
+
+        // Volume icon click to mute/unmute
+        volumeIcon.addEventListener('click', () => {
+            if (volumeSlider.value > 0) {
+                this.lastVolume = volumeSlider.value / 100;
+                volumeSlider.value = 0;
+                this.widget.setVolume(0);
+                this.updateVolumeIcon(0);
+            } else {
+                volumeSlider.value = this.lastVolume * 100;
+                this.widget.setVolume(this.lastVolume);
+                this.updateVolumeIcon(this.lastVolume);
+            }
+        });
+
+        // Play/Pause control
+        playPauseBtn.addEventListener('click', () => {
+            this.widget.toggle();
+            this.isPlaying = !this.isPlaying;
+            playPauseBtn.innerHTML = this.isPlaying ? 
+                '<i class="fas fa-pause"></i>' : 
+                '<i class="fas fa-play"></i>';
+        });
+
+        // Initialize widget events
+        this.widget.bind(SC.Widget.Events.READY, () => {
+            this.widget.getVolume(volume => {
+                volumeSlider.value = volume * 100;
+                this.updateVolumeIcon(volume);
+            });
+        });
+
+        this.widget.bind(SC.Widget.Events.PLAY, () => {
+            this.isPlaying = true;
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        });
+
+        this.widget.bind(SC.Widget.Events.PAUSE, () => {
+            this.isPlaying = false;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+    }
+
+    updateVolumeIcon(volume) {
+        const volumeIcon = document.querySelector('.volume-icon');
+        if (volume === 0) {
+            volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        } else if (volume < 0.5) {
+            volumeIcon.innerHTML = '<i class="fas fa-volume-down"></i>';
+        } else {
+            volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
+        }
+    }
 }
 
 // Initialize SoundCloud Widget API
@@ -205,9 +275,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const script = document.createElement('script');
     script.src = 'https://w.soundcloud.com/player/api.js';
     script.onload = () => {
-        const player = new MusicPlayer();
+        window.player = new MusicPlayer();
     };
     document.body.appendChild(script);
+});
+
+// Initialize bats when the document is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initBats();
 });
 
 // Bat Animation
@@ -234,83 +309,4 @@ function initBats() {
             bat.style.transform = `rotate(${Math.random() * 360}deg)`;
         }, 5000 + Math.random() * 2000);
     });
-}
-
-// Initialize bats when the document is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initBats();
-    // ... existing code ...
-});
-
-// SoundCloud Player Controls
-document.addEventListener('DOMContentLoaded', () => {
-    const iframe = document.getElementById('soundcloud-iframe');
-    let widget = SC.Widget(iframe);
-    const playPauseBtn = document.querySelector('.play-pause-btn');
-    const volumeSlider = document.querySelector('.volume-slider');
-    const volumeIcon = document.querySelector('.volume-icon');
-    let isPlaying = false;
-    let lastVolume = 1;
-
-    // Initialize volume slider
-    volumeSlider.value = 100;
-
-    // Volume control
-    volumeSlider.addEventListener('input', (e) => {
-        const volume = e.target.value / 100;
-        widget.setVolume(volume);
-        updateVolumeIcon(volume);
-    });
-
-    // Volume icon click to mute/unmute
-    volumeIcon.addEventListener('click', () => {
-        if (volumeSlider.value > 0) {
-            lastVolume = volumeSlider.value / 100;
-            volumeSlider.value = 0;
-            widget.setVolume(0);
-            updateVolumeIcon(0);
-        } else {
-            volumeSlider.value = lastVolume * 100;
-            widget.setVolume(lastVolume);
-            updateVolumeIcon(lastVolume);
-        }
-    });
-
-    // Play/Pause control
-    playPauseBtn.addEventListener('click', () => {
-        widget.toggle();
-        isPlaying = !isPlaying;
-        playPauseBtn.innerHTML = isPlaying ? 
-            '<i class="fas fa-pause"></i>' : 
-            '<i class="fas fa-play"></i>';
-    });
-
-    // Update volume icon based on volume level
-    function updateVolumeIcon(volume) {
-        if (volume === 0) {
-            volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
-        } else if (volume < 0.5) {
-            volumeIcon.innerHTML = '<i class="fas fa-volume-down"></i>';
-        } else {
-            volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
-        }
-    }
-
-    // Initialize widget events
-    widget.bind(SC.Widget.Events.READY, () => {
-        widget.getVolume(volume => {
-            volumeSlider.value = volume * 100;
-            updateVolumeIcon(volume);
-        });
-    });
-
-    widget.bind(SC.Widget.Events.PLAY, () => {
-        isPlaying = true;
-        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-    });
-
-    widget.bind(SC.Widget.Events.PAUSE, () => {
-        isPlaying = false;
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-    });
-}); 
+} 
