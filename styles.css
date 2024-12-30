@@ -399,21 +399,27 @@ nav {
 
 /* SoundCloud Player */
 .soundcloud-player {
-    width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 0 20px;
-    position: relative;
+    position: fixed;
+    bottom: 20px;
+    right: 340px;
+    width: 300px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
 }
 
 .soundcloud-player iframe {
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
     transition: transform 0.3s ease;
+    width: 100%;
+    height: 80px;
 }
 
 .soundcloud-player:hover iframe {
-    transform: scale(1.02);
+    transform: scale(1);
 }
 
 /* Fixed Player Controls */
