@@ -813,24 +813,25 @@ main {
 /* Vinyl Player Container */
 .vinyl-container {
     position: fixed !important;
-    top: 50% !important;
+    top: 120px !important;
     left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, 0) !important;
     display: flex !important;
     align-items: center !important;
     gap: 2rem !important;
     z-index: 999999 !important;
     pointer-events: auto !important;
     will-change: transform !important;
-    -webkit-transform: translate3d(-50%, -50%, 0) !important;
+    -webkit-transform: translate3d(-50%, 0, 0) !important;
     transform-style: preserve-3d !important;
     backface-visibility: hidden !important;
+    padding: 20px !important;
 }
 
 /* Spinning Vinyl */
 .vinyl-record {
-    width: 300px !important;
-    height: 300px !important;
+    width: 200px !important;
+    height: 200px !important;
     background: #000 !important;
     border-radius: 50% !important;
     box-shadow: 
@@ -884,12 +885,12 @@ main {
 /* Volume Control Next to Vinyl */
 .vinyl-controls {
     background: rgba(0, 0, 0, 0.95) !important;
-    padding: 1rem !important;
+    padding: 0.8rem !important;
     border-radius: 20px !important;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7) !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 1rem !important;
+    gap: 0.8rem !important;
     backdrop-filter: blur(10px) !important;
     transform-style: preserve-3d !important;
     backface-visibility: hidden !important;
@@ -935,16 +936,24 @@ main {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .vinyl-container {
-        flex-direction: column !important;
+        flex-direction: row !important;
         gap: 1rem !important;
+        top: 100px !important;
+        padding: 10px !important;
+        width: 90% !important;
+        justify-content: center !important;
     }
 
     .vinyl-record {
-        width: 250px !important;
-        height: 250px !important;
+        width: 150px !important;
+        height: 150px !important;
     }
 
     .vinyl-controls {
-        padding: 0.8rem !important;
+        padding: 0.6rem !important;
+    }
+
+    .volume-control {
+        width: 150px !important;
     }
 } 
