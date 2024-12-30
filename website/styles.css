@@ -85,7 +85,7 @@ main {
 /* Navigation */
 header {
     background: rgba(0, 0, 0, 0.9);
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -104,10 +104,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
-    gap: 2rem;
 }
 
 .logo {
+    flex-shrink: 0;
     color: #ffffff;
     font-size: 2rem;
     font-weight: bold;
@@ -172,8 +172,7 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    perspective: 1000px;
-    margin-right: auto;
+    margin: 0 auto 0 4rem;
 }
 
 .nav-links li {
@@ -954,13 +953,21 @@ header .social-links {
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    margin-left: auto;
 }
 
 header .social-icon {
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: all 0.3s ease;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 header .social-icon:hover {
@@ -969,6 +976,7 @@ header .social-icon:hover {
     text-shadow: 
         0 0 10px var(--neon-red),
         0 0 20px var(--neon-red);
+    background: rgba(255, 0, 0, 0.1);
 }
 
 /* Mobile responsive styles */
@@ -988,6 +996,7 @@ header .social-icon:hover {
         justify-content: center;
         align-items: center;
         transition: right 0.5s ease;
+        margin: 0;
     }
 
     .nav-links.active {
@@ -999,10 +1008,18 @@ header .social-icon:hover {
     }
 
     header .social-links {
-        display: none;
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        padding: 1rem;
+        border-radius: 2rem;
+        backdrop-filter: blur(10px);
     }
 
     .menu-btn {
-        margin-left: auto;
+        display: block;
+        margin-left: 1rem;
     }
 } 
