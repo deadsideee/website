@@ -201,15 +201,19 @@ class MusicPlayer {
         const volumeControl = document.querySelector('.volume-control');
         const volumeIcon = document.querySelector('.volume-icon');
 
-        // Initialize volume slider
+        // Initialize volume slider at max volume
         volumeSlider.value = 100;
         this.updateVolumeDisplay(100);
+        this.widget.setVolume(1); // Set initial volume to maximum
 
         // Volume slider change
         volumeSlider.addEventListener('input', (e) => {
-            const value = e.target.value;
+            const value = parseInt(e.target.value);
             this.updateVolumeDisplay(value);
-            this.widget.setVolume(value / 100);
+            
+            // Exponential scaling for more natural volume control
+            const scaledVolume = Math.pow(value / 100, 0.5);
+            this.widget.setVolume(scaledVolume);
         });
 
         // Volume icon click (mute/unmute)
@@ -218,17 +222,17 @@ class MusicPlayer {
                 this.lastVolume = volumeSlider.value;
                 volumeSlider.value = 0;
             } else {
-                volumeSlider.value = this.lastVolume;
+                volumeSlider.value = this.lastVolume || 100;
             }
             volumeSlider.dispatchEvent(new Event('input'));
         });
 
         // Initialize widget events
         this.widget.bind(SC.Widget.Events.READY, () => {
-            this.widget.getVolume(volume => {
-                volumeSlider.value = volume * 100;
-                this.updateVolumeDisplay(volumeSlider.value);
-            });
+            // Set initial volume to maximum
+            this.widget.setVolume(1);
+            volumeSlider.value = 100;
+            this.updateVolumeDisplay(100);
         });
     }
 
