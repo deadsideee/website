@@ -24,16 +24,25 @@ nav {
 @keyframes logo-glow {
     0%, 100% {
         text-shadow: 
-            0 0 10px var(--neon-red),
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 15px var(--neon-red),
             0 0 20px var(--neon-red),
-            0 0 30px var(--neon-red);
+            0 0 35px var(--neon-red),
+            0 0 40px var(--neon-red),
+            0 0 50px var(--neon-red);
+        filter: brightness(1.2);
     }
     50% {
         text-shadow: 
-            0 0 20px var(--neon-red),
-            0 0 30px var(--neon-red),
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 25px var(--neon-red),
             0 0 40px var(--neon-red),
-            0 0 50px var(--neon-red);
+            0 0 50px var(--neon-red),
+            0 0 60px var(--neon-red),
+            0 0 70px var(--neon-red);
+        filter: brightness(1.5);
     }
 }
 
@@ -57,18 +66,21 @@ nav {
 .logo {
     margin-right: 4rem;
     color: #ffffff;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    text-shadow: 
-        0 0 10px var(--neon-red),
-        0 0 20px var(--neon-red),
-        0 0 30px var(--neon-red),
-        0 0 40px var(--neon-red);
     animation: logo-glow 2s infinite;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px var(--neon-red),
+        0 0 20px var(--neon-red),
+        0 0 35px var(--neon-red),
+        0 0 40px var(--neon-red),
+        0 0 50px var(--neon-red);
 }
 
 .logo::before,
@@ -99,10 +111,14 @@ nav {
 .logo:hover {
     transform: scale(1.1);
     text-shadow: 
-        0 0 20px var(--neon-red),
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 25px var(--neon-red),
         0 0 40px var(--neon-red),
+        0 0 50px var(--neon-red),
         0 0 60px var(--neon-red),
-        0 0 80px var(--neon-red);
+        0 0 70px var(--neon-red);
+    filter: brightness(1.5);
 }
 
 .logo:hover::before,
