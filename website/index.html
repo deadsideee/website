@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadside - Real Music</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/public/deadside.jpg">
+    <link rel="apple-touch-icon" href="/public/deadside.jpg">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Deadside - Real Music">
+    <meta name="description" content="Experience the dark, atmospheric soundscapes of Deadside. Pushing boundaries with unique beats and haunting melodies. Real Music, Real Emotion.">
+    <meta name="image" content="https://deadside-website.vercel.app/public/deadside.jpg">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://deadside-website.vercel.app/">
+    <meta property="og:title" content="Deadside - Real Music">
+    <meta property="og:description" content="Experience the dark, atmospheric soundscapes of Deadside. Pushing boundaries with unique beats and haunting melodies. Real Music, Real Emotion.">
+    <meta property="og:image" content="https://deadside-website.vercel.app/public/deadside.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://deadside-website.vercel.app/">
+    <meta property="twitter:title" content="Deadside - Real Music">
+    <meta property="twitter:description" content="Experience the dark, atmospheric soundscapes of Deadside. Pushing boundaries with unique beats and haunting melodies. Real Music, Real Emotion.">
+    <meta property="twitter:image" content="https://deadside-website.vercel.app/public/deadside.jpg">
+
+    <!-- Theme Color for browsers -->
+    <meta name="theme-color" content="#ff0000">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/public/deadside.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <div class="bat-container">
+        <div class="bat">🦇</div>
+        <div class="bat">🦇</div>
+        <div class="bat">🦇</div>
+        <div class="bat">🦇</div>
+        <div class="bat">🦇</div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo" data-text="DEADSIDE">DEADSIDE</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-text="Home">Home</a></li>
+                <li><a href="#music" data-text="Music">Music</a></li>
+                <li><a href="about.html" data-text="About">About</a></li>
+            </ul>
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/_deadside/" target="_blank" class="social-icon" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://open.spotify.com/artist/5TiHpOogp9nHewz6WUzHQf?si=UK8nR_FcQDqKRRyXbMSE4Q" target="_blank" class="social-icon" title="Spotify">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="https://soundcloud.com/deadsidee" target="_blank" class="social-icon" title="SoundCloud">
+                    <i class="fab fa-soundcloud"></i>
+                </a>
+                <a href="https://youtube.com/@deadsidee" target="_blank" class="social-icon" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://x.com/_deadside" target="_blank" class="social-icon" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="soundcloud-player">
+                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
+                    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/deadsidee/bam&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true&artwork_url=https://deadside-website.vercel.app/public/deadside.jpg"
+                    id="soundcloud-iframe">
+                </iframe>
+            </div>
+
+            <div class="player-controls-fixed">
+                <button class="play-pause-btn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <div class="volume-control">
+                    <i class="fas fa-volume-up volume-icon"></i>
+                    <input type="range" class="volume-slider" min="0" max="100" value="100">
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="arrows">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="music" class="music-section">
+            <h2 class="section-title" data-text="Latest Tracks">Latest Tracks</h2>
+            <div class="music-grid">
+                <div class="music-card" data-tilt>
+                    <div class="music-img">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Flood My Wrist</h3>
+                        <p>Latest release by Deadside</p>
+                        <div class="track-stats">
+                            <span><i class="fas fa-play"></i> Stream</span>
+                            <span><i class="fas fa-share"></i> Share</span>
+                            <span><i class="fas fa-heart"></i> Like</span>
+                        </div>
+                        <button class="play-btn" data-track="flood-my-wrist"><i class="fas fa-play"></i> Play Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="about-grid">
+                <div class="about-image" data-tilt>
+                    <div class="glitch-image"></div>
+                </div>
+                <div class="about-content">
+                    <p class="about-text">Real Music</p>
+                    <p class="about-text">Real Emotion</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2024 DEADSIDE. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

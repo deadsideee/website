@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "**/*",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/styles.css",
+            "headers": {
+                "Content-Type": "text/css"
+            },
+            "dest": "/styles.css"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/$1"
+        }
+    ]
+} 
