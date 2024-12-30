@@ -707,6 +707,7 @@ main {
         0 0 70px rgba(255, 255, 255, 0.6);
     animation: text-glow 2s infinite;
     position: relative;
+    z-index: 10;
 }
 
 .about-text::before,
@@ -775,8 +776,8 @@ main {
 .about-content {
     text-align: center;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    backdrop-filter: none;
+    background: none;
+    box-shadow: none;
 } 
