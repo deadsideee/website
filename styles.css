@@ -236,11 +236,12 @@ header .social-icon:hover {
     bottom: 20px;
     right: 340px;
     width: 300px;
-    z-index: 1000;
+    z-index: 9999;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     padding: 10px;
     backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .soundcloud-player iframe {
@@ -261,7 +262,7 @@ header .social-icon:hover {
     bottom: 20px;
     right: 20px;
     width: 300px;
-    z-index: 1000;
+    z-index: 9999;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     padding: 10px;
@@ -269,6 +270,7 @@ header .social-icon:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .play-pause-btn {
@@ -473,4 +475,19 @@ main {
     min-height: 200vh;
     position: relative;
     z-index: 1;
+} 
+
+/* Mobile responsiveness for fixed elements */
+@media (max-width: 768px) {
+    .soundcloud-player {
+        right: 20px;
+        bottom: 90px;
+        width: calc(100% - 40px);
+        max-width: 300px;
+    }
+
+    .player-controls-fixed {
+        width: calc(100% - 40px);
+        max-width: 300px;
+    }
 } 
