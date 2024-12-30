@@ -631,6 +631,7 @@ footer::before {
         0 0 30px var(--neon-red);
     animation: red-text-glow 2s infinite;
     letter-spacing: 3px;
+    margin: 1rem 0;
 }
 
 @keyframes red-text-glow {
