@@ -42,10 +42,17 @@ nav {
 
 /* Social Links in Header */
 header .social-links {
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
     display: flex;
     gap: 1.5rem;
     align-items: center;
-    margin-left: auto;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+    z-index: 1001;
 }
 
 header .social-icon {
@@ -108,7 +115,9 @@ header .social-icon:hover {
     header .social-links {
         position: fixed;
         bottom: 2rem;
+        top: auto;
         left: 50%;
+        right: auto;
         transform: translateX(-50%);
         background: rgba(0, 0, 0, 0.8);
         padding: 1rem;
