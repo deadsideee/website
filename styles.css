@@ -669,3 +669,47 @@ main {
         font-size: 1.1rem;
     }
 } 
+
+.about-text {
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #fff,
+        0 0 40px rgba(255, 255, 255, 0.8),
+        0 0 70px rgba(255, 255, 255, 0.6);
+    animation: text-glow 2s infinite;
+}
+
+@keyframes text-glow {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 30px #fff,
+            0 0 40px rgba(255, 255, 255, 0.8),
+            0 0 70px rgba(255, 255, 255, 0.6);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px #fff,
+            0 0 25px #fff,
+            0 0 35px #fff,
+            0 0 50px rgba(255, 255, 255, 0.8),
+            0 0 80px rgba(255, 255, 255, 0.6);
+    }
+}
+
+.about-content {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+} 
