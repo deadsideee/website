@@ -74,8 +74,18 @@
         <section id="home" class="hero">
             <div class="soundcloud-player">
                 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
-                    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/deadsidee&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/deadsidee&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                    id="soundcloud-iframe">
                 </iframe>
+                <div class="player-controls">
+                    <button class="play-pause-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <div class="volume-control">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="100" value="100">
+                    </div>
+                </div>
             </div>
 
             <div class="scroll-indicator">
@@ -150,6 +160,7 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://w.soundcloud.com/player/api.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

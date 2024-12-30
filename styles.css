@@ -399,21 +399,85 @@ nav {
 
 /* SoundCloud Player */
 .soundcloud-player {
-    width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 0 20px;
-    position: relative;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
 }
 
 .soundcloud-player iframe {
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
     transition: transform 0.3s ease;
+    width: 100%;
+    height: 80px;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.play-pause-btn {
+    background: transparent;
+    border: none;
+    color: var(--neon-red);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.play-pause-btn:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--neon-red);
+}
+
+.volume-control {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.volume-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--neon-red);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--neon-red);
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.volume-icon {
+    color: var(--neon-red);
+    font-size: 1rem;
 }
 
 .soundcloud-player:hover iframe {
-    transform: scale(1.02);
+    transform: scale(1);
 }
 
 /* Contact Section */

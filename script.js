@@ -240,4 +240,50 @@ function initBats() {
 document.addEventListener('DOMContentLoaded', () => {
     initBats();
     // ... existing code ...
+});
+
+// SoundCloud Player Controls
+document.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('soundcloud-iframe');
+    const player = SC.Widget(iframe);
+    const playPauseBtn = document.querySelector('.play-pause-btn');
+    const volumeSlider = document.querySelector('.volume-slider');
+    const volumeIcon = document.querySelector('.volume-icon');
+    let isPlaying = false;
+
+    // Initialize SoundCloud Widget API
+    player.bind(SC.Widget.Events.READY, () => {
+        // Play/Pause button
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                player.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                player.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', () => {
+            const volume = volumeSlider.value;
+            player.setVolume(volume);
+            
+            // Update volume icon
+            if (volume == 0) {
+                volumeIcon.className = 'fas fa-volume-mute volume-icon';
+            } else if (volume < 50) {
+                volumeIcon.className = 'fas fa-volume-down volume-icon';
+            } else {
+                volumeIcon.className = 'fas fa-volume-up volume-icon';
+            }
+        });
+
+        // Update play button state when track ends
+        player.bind(SC.Widget.Events.FINISH, () => {
+            isPlaying = false;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+    });
 }); 
