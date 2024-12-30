@@ -230,18 +230,32 @@ header .social-icon:hover {
     }
 } 
 
+/* Fixed Player Container */
+.player-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    pointer-events: auto;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
 /* SoundCloud Player */
 .soundcloud-player {
     position: fixed;
     bottom: 20px;
     right: 340px;
     width: 300px;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.95);
     border-radius: 10px;
     padding: 10px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    transform: translateZ(0);
+    will-change: transform;
+    pointer-events: auto;
 }
 
 .soundcloud-player iframe {
@@ -262,15 +276,18 @@ header .social-icon:hover {
     bottom: 20px;
     right: 20px;
     width: 300px;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.95);
     border-radius: 10px;
     padding: 10px;
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    transform: translateZ(0);
+    will-change: transform;
+    pointer-events: auto;
 }
 
 .play-pause-btn {
@@ -529,11 +546,15 @@ main {
         bottom: 90px;
         width: calc(100% - 40px);
         max-width: 300px;
+        position: fixed;
+        transform: translateZ(0);
     }
 
     .player-controls-fixed {
         width: calc(100% - 40px);
         max-width: 300px;
+        position: fixed;
+        transform: translateZ(0);
     }
 } 
 
