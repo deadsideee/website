@@ -553,6 +553,7 @@ main {
     min-height: 200vh;
     position: relative;
     z-index: 1;
+    padding-bottom: 100vh;
 } 
 
 /* Mobile responsiveness for fixed elements */
@@ -783,8 +784,7 @@ main {
 } 
 
 .about-text.emotion {
-    position: fixed;
-    bottom: 20px;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -800,8 +800,8 @@ main {
         0 0 40px rgba(255, 255, 255, 0.8),
         0 0 70px rgba(255, 255, 255, 0.6);
     animation: text-glow 2s infinite;
-    margin-top: calc(100vh + 100px);
-    padding-bottom: 2rem;
+    margin-top: 150vh;
+    padding-bottom: 4rem;
 }
 
 .about-text.music {
