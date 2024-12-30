@@ -214,14 +214,14 @@ nav {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #fff;
-    padding: 80px 1rem 1rem;
+    padding: 2rem 1rem;
     position: relative;
     overflow: hidden;
 }
@@ -303,9 +303,23 @@ nav {
 
 /* Music Section */
 .music-section {
-    padding: 5rem 2rem;
+    padding: 80px 2rem 2rem;
     background: var(--dark-bg);
     position: relative;
+}
+
+.section-title {
+    font-size: 3rem;
+    color: var(--neon-red);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 
+        0 0 10px var(--neon-red),
+        0 0 20px var(--neon-red),
+        0 0 30px var(--neon-red);
+    animation: red-text-glow 2s infinite;
 }
 
 .music-section::before {
