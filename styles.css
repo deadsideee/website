@@ -291,37 +291,71 @@ header .social-icon:hover {
     flex: 1;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 20px;
+    position: relative;
 }
 
 .volume-slider {
     flex: 1;
     -webkit-appearance: none;
-    height: 4px;
-    border-radius: 2px;
-    background: rgba(255, 255, 255, 0.2);
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, var(--neon-red) 0%, var(--neon-red) 100%, rgba(255, 255, 255, 0.2) 100%);
     outline: none;
+    transition: all 0.3s ease;
+}
+
+.volume-slider:hover {
+    height: 8px;
 }
 
 .volume-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: var(--neon-red);
+    background: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px var(--neon-red);
+    border: 2px solid var(--neon-red);
+    box-shadow: 
+        0 0 10px var(--neon-red),
+        0 0 20px rgba(255, 0, 0, 0.5);
 }
 
 .volume-slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
+    background: var(--neon-red);
+}
+
+.volume-slider::-webkit-slider-thumb:active {
+    transform: scale(1.1);
 }
 
 .volume-icon {
     color: var(--neon-red);
-    font-size: 1rem;
-} 
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.volume-icon:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--neon-red);
+}
+
+/* Show volume percentage */
+.volume-control::after {
+    content: attr(data-volume);
+    position: absolute;
+    right: -40px;
+    color: var(--neon-red);
+    font-size: 0.9rem;
+    min-width: 35px;
+    text-align: left;
+}
 
 /* Latest Track Section */
 .latest-track {

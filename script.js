@@ -309,4 +309,51 @@ function initBats() {
             bat.style.transform = `rotate(${Math.random() * 360}deg)`;
         }, 5000 + Math.random() * 2000);
     });
-} 
+}
+
+// Volume control functionality
+const volumeSlider = document.querySelector('.volume-slider');
+const volumeControl = document.querySelector('.volume-control');
+const volumeIcon = document.querySelector('.volume-icon');
+let lastVolume = 100;
+
+// Update volume display and icon
+function updateVolumeDisplay(value) {
+    volumeControl.setAttribute('data-volume', `${value}%`);
+    
+    // Update volume icon based on level
+    if (value === 0) {
+        volumeIcon.className = 'fas fa-volume-mute volume-icon';
+    } else if (value < 50) {
+        volumeIcon.className = 'fas fa-volume-down volume-icon';
+    } else {
+        volumeIcon.className = 'fas fa-volume-up volume-icon';
+    }
+}
+
+// Initialize volume display
+updateVolumeDisplay(volumeSlider.value);
+
+// Handle volume slider change
+volumeSlider.addEventListener('input', (e) => {
+    const value = e.target.value;
+    updateVolumeDisplay(value);
+    
+    // Update SoundCloud player volume if it exists
+    if (window.scPlayer) {
+        window.scPlayer.setVolume(value / 100);
+    }
+});
+
+// Handle volume icon click (mute/unmute)
+volumeIcon.addEventListener('click', () => {
+    if (volumeSlider.value > 0) {
+        lastVolume = volumeSlider.value;
+        volumeSlider.value = 0;
+    } else {
+        volumeSlider.value = lastVolume;
+    }
+    
+    // Trigger input event to update display and player
+    volumeSlider.dispatchEvent(new Event('input'));
+}); 
