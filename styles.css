@@ -706,24 +706,69 @@ main {
         0 0 40px rgba(255, 255, 255, 0.8),
         0 0 70px rgba(255, 255, 255, 0.6);
     animation: text-glow 2s infinite;
+    position: relative;
 }
 
-@keyframes text-glow {
-    0%, 100% {
-        text-shadow: 
-            0 0 10px #fff,
-            0 0 20px #fff,
-            0 0 30px #fff,
-            0 0 40px rgba(255, 255, 255, 0.8),
-            0 0 70px rgba(255, 255, 255, 0.6);
+.about-text::before,
+.about-text::after {
+    content: '🦇';
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.about-text:first-child::before {
+    --x: -150px;
+    --y: -100px;
+    --r: -45deg;
+    left: 0;
+    animation: bat-fly-about 3s infinite;
+}
+
+.about-text:first-child::after {
+    --x: 150px;
+    --y: -100px;
+    --r: 45deg;
+    right: 0;
+    animation: bat-fly-about 3s infinite 0.5s;
+}
+
+.about-text:last-child::before {
+    --x: -120px;
+    --y: -80px;
+    --r: -30deg;
+    left: 0;
+    animation: bat-fly-about 3s infinite 1s;
+}
+
+.about-text:last-child::after {
+    --x: 120px;
+    --y: -80px;
+    --r: 30deg;
+    right: 0;
+    animation: bat-fly-about 3s infinite 1.5s;
+}
+
+.about-text:hover::before,
+.about-text:hover::after {
+    animation-duration: 2s;
+}
+
+@keyframes bat-fly-about {
+    0% {
+        transform: translate(0, 0) rotate(var(--r)) scale(0.5);
+        opacity: 0;
     }
-    50% {
-        text-shadow: 
-            0 0 15px #fff,
-            0 0 25px #fff,
-            0 0 35px #fff,
-            0 0 50px rgba(255, 255, 255, 0.8),
-            0 0 80px rgba(255, 255, 255, 0.6);
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) rotate(calc(var(--r) + 360deg)) scale(0.5);
+        opacity: 0;
     }
 }
 
