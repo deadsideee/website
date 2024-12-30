@@ -812,29 +812,37 @@ main {
 
 /* Vinyl Player Container */
 .vinyl-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    z-index: 999999;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+    will-change: transform !important;
+    -webkit-transform: translate3d(-50%, -50%, 0) !important;
+    transform-style: preserve-3d !important;
+    backface-visibility: hidden !important;
 }
 
 /* Spinning Vinyl */
 .vinyl-record {
-    width: 300px;
-    height: 300px;
-    background: #000;
-    border-radius: 50%;
+    width: 300px !important;
+    height: 300px !important;
+    background: #000 !important;
+    border-radius: 50% !important;
     box-shadow: 
         0 0 20px rgba(0, 0, 0, 0.8),
-        0 0 40px rgba(0, 0, 0, 0.6);
-    animation: spin 10s linear infinite;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
+        0 0 40px rgba(0, 0, 0, 0.6) !important;
+    animation: spin 10s linear infinite !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    transform-style: preserve-3d !important;
+    backface-visibility: hidden !important;
+    will-change: transform !important;
 }
 
 .vinyl-record:hover {
@@ -875,14 +883,19 @@ main {
 
 /* Volume Control Next to Vinyl */
 .vinyl-controls {
-    background: rgba(0, 0, 0, 0.95);
-    padding: 1rem;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.95) !important;
+    padding: 1rem !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    backdrop-filter: blur(10px) !important;
+    transform-style: preserve-3d !important;
+    backface-visibility: hidden !important;
+    will-change: transform !important;
+    position: relative !important;
+    z-index: 999999 !important;
 }
 
 .volume-control {
@@ -908,4 +921,30 @@ main {
 
 .player-controls-fixed {
     display: none !important;
+} 
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .vinyl-container {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    .vinyl-record {
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+    .vinyl-controls {
+        padding: 0.8rem !important;
+    }
 } 
