@@ -232,14 +232,14 @@ header .social-icon:hover {
 
 /* Fixed Player Container */
 .player-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99999;
-    pointer-events: auto;
-    transform: translateZ(0);
-    will-change: transform;
-    -webkit-transform: translate3d(0,0,0);
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+    -webkit-transform: translate3d(0,0,0) !important;
 }
 
 /* SoundCloud Player */
@@ -248,26 +248,35 @@ header .social-icon:hover {
     bottom: 20px !important;
     right: 340px !important;
     width: 300px !important;
-    z-index: 99999 !important;
-    background: rgba(0, 0, 0, 0.95);
-    border-radius: 10px;
-    padding: 10px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    transform: translateZ(0);
-    will-change: transform;
-    pointer-events: auto;
-    -webkit-transform: translate3d(0,0,0);
+    height: 100px !important;
+    z-index: 999999 !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7) !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+    pointer-events: auto !important;
+    -webkit-transform: translate3d(0,0,0) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .soundcloud-player iframe {
     position: relative !important;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
-    transition: transform 0.3s ease;
+    border-radius: 10px !important;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.5) !important;
+    transition: transform 0.3s ease !important;
     width: 100% !important;
     height: 80px !important;
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
 }
 
 .soundcloud-player:hover iframe {
@@ -280,19 +289,21 @@ header .social-icon:hover {
     bottom: 20px !important;
     right: 20px !important;
     width: 300px !important;
-    z-index: 99999 !important;
-    background: rgba(0, 0, 0, 0.95);
-    border-radius: 10px;
-    padding: 10px;
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    transform: translateZ(0);
-    will-change: transform;
-    pointer-events: auto;
-    -webkit-transform: translate3d(0,0,0);
+    z-index: 999999 !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    backdrop-filter: blur(10px) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7) !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+    pointer-events: auto !important;
+    -webkit-transform: translate3d(0,0,0) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .play-pause-btn {
@@ -552,16 +563,20 @@ main {
         width: calc(100% - 40px) !important;
         max-width: 300px !important;
         position: fixed !important;
-        transform: translateZ(0);
-        -webkit-transform: translate3d(0,0,0);
+        transform: translateZ(0) !important;
+        -webkit-transform: translate3d(0,0,0) !important;
+        left: auto !important;
+        top: auto !important;
     }
 
     .player-controls-fixed {
         width: calc(100% - 40px) !important;
         max-width: 300px !important;
         position: fixed !important;
-        transform: translateZ(0);
-        -webkit-transform: translate3d(0,0,0);
+        transform: translateZ(0) !important;
+        -webkit-transform: translate3d(0,0,0) !important;
+        left: auto !important;
+        top: auto !important;
     }
 } 
 
