@@ -6,16 +6,19 @@ let volumeIcon = document.querySelector('.volume-icon');
 let lastVolume = 100;
 
 window.onload = function() {
+    // Initialize SoundCloud Widget
     widget = SC.Widget(iframeElement);
     
     // Initialize volume control
     widget.bind(SC.Widget.Events.READY, function() {
+        console.log('SoundCloud Widget Ready');
         widget.setVolume(100);
         
         // Volume slider event
         volumeSlider.addEventListener('input', function() {
-            const volume = this.value;
-            widget.setVolume(volume);
+            const volume = parseInt(this.value);
+            console.log('Setting volume to:', volume);
+            widget.setVolume(volume / 100); // Convert to 0-1 range for SoundCloud API
             updateVolumeIcon(volume);
         });
 
@@ -28,10 +31,23 @@ window.onload = function() {
                 updateVolumeIcon(0);
             } else {
                 volumeSlider.value = lastVolume;
-                widget.setVolume(lastVolume);
+                widget.setVolume(lastVolume / 100);
                 updateVolumeIcon(lastVolume);
             }
         });
+
+        // Add play event listener to vinyl record
+        const vinylRecord = document.querySelector('.vinyl-record');
+        if (vinylRecord) {
+            vinylRecord.addEventListener('click', function() {
+                widget.toggle();
+            });
+        }
+    });
+
+    // Add error handling
+    widget.bind(SC.Widget.Events.ERROR, function() {
+        console.error('SoundCloud Widget Error');
     });
 };
 
