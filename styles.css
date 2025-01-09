@@ -66,36 +66,23 @@ nav {
 }
 
 .logo {
-    font-family: 'UnifrakturMaguntia', 'Metal Mania', cursive;
-    font-size: 1.6rem;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 1.5rem;
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: 10px;
+    letter-spacing: 12px;
     position: relative;
     text-shadow: none;
-    background: linear-gradient(180deg, #fff 80%, #ff0000 95%);
+    background: linear-gradient(180deg, #fff 75%, #ff0000 90%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 1));
     font-weight: 900;
-    transform: scaleY(2.2) scaleX(0.7);
-    -webkit-text-stroke: 0.5px #fff;
+    transform: scaleY(2.5) scaleX(0.6);
+    -webkit-text-stroke: 0.7px #fff;
     margin-right: 2rem;
-    clip-path: polygon(
-        0 0, 100% 0,
-        100% 85%, 95% 100%,
-        90% 85%, 85% 100%,
-        80% 85%, 75% 100%,
-        70% 85%, 65% 100%,
-        60% 85%, 55% 100%,
-        50% 85%, 45% 100%,
-        40% 85%, 35% 100%,
-        30% 85%, 25% 100%,
-        20% 85%, 15% 100%,
-        10% 85%, 5% 100%,
-        0 85%
-    );
+    padding: 0.5rem 0;
 }
 
 .logo::after {
@@ -103,28 +90,14 @@ nav {
     position: absolute;
     left: 0;
     top: 0;
-    background: linear-gradient(180deg, transparent 80%, #ff0000 95%);
+    background: linear-gradient(180deg, transparent 75%, #ff0000 90%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 1;
     z-index: -1;
     filter: none;
-    transform: translateY(1px) scaleY(2.2) scaleX(0.7);
-    clip-path: polygon(
-        0 0, 100% 0,
-        100% 85%, 95% 100%,
-        90% 85%, 85% 100%,
-        80% 85%, 75% 100%,
-        70% 85%, 65% 100%,
-        60% 85%, 55% 100%,
-        50% 85%, 45% 100%,
-        40% 85%, 35% 100%,
-        30% 85%, 25% 100%,
-        20% 85%, 15% 100%,
-        10% 85%, 5% 100%,
-        0 85%
-    );
+    transform: translateY(1px) scaleY(2.5) scaleX(0.6);
 }
 
 .logo::before,
@@ -1012,4 +985,4 @@ main {
     }
 } 
 
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap'); 
