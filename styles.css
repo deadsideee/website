@@ -66,17 +66,35 @@ nav {
 }
 
 .logo {
-    margin-right: 4rem;
+    font-family: 'Metal Mania', cursive;
+    font-size: 4rem;
     color: #fff;
-    font-size: 2.5rem;
-    font-weight: 700;
     text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    letter-spacing: 4px;
     position: relative;
-    animation: logo-glow 2s infinite;
-    letter-spacing: 2px;
-    -webkit-text-stroke: 1px #ff0000;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(180deg, #fff 60%, #ff0000 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.logo::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(180deg, transparent 60%, #ff0000 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.8;
+    z-index: -1;
+    filter: blur(1px);
+    transform: translateY(2px);
 }
 
 .logo::before,
@@ -973,3 +991,5 @@ main {
         padding: 0.8rem !important;
     }
 } 
+
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap'); 
