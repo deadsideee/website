@@ -810,27 +810,29 @@ main {
 
 /* Spinning Vinyl */
 .vinyl-record {
-    width: 300px !important;
-    height: 300px !important;
-    background: #000 !important;
-    border-radius: 50% !important;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at center,
+        #1a1a1a 0%,
+        #000000 20%,
+        #1a1a1a 21%,
+        #000000 30%,
+        #1a1a1a 31%,
+        #000000 40%,
+        #1a1a1a 41%,
+        #000000 100%
+    );
+    position: relative;
     box-shadow: 
-        0 0 20px rgba(0, 0, 0, 0.8),
-        0 0 40px rgba(0, 0, 0, 0.6) !important;
-    animation: spin 10s linear infinite !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    position: relative !important;
-    transform-style: preserve-3d !important;
-    backface-visibility: hidden !important;
-    will-change: transform !important;
-}
-
-.vinyl-record:hover {
-    transform: scale(1.05);
-    box-shadow: 
-        0 0 30px rgba(255, 0, 0, 0.4),
-        0 0 60px rgba(255, 0, 0, 0.2);
+        0 0 30px rgba(0, 0, 0, 0.8),
+        inset 0 0 50px rgba(255, 255, 255, 0.1),
+        inset 0 0 20px rgba(0, 0, 0, 0.9);
+    animation: spin 4s linear infinite;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .vinyl-record::before {
@@ -838,11 +840,20 @@ main {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    background: radial-gradient(circle, #333 0%, #333 30%, transparent 31%);
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(
+        circle at center,
+        #4a4a4a 0%,
+        #2a2a2a 40%,
+        #1a1a1a 60%,
+        #000000 100%
+    );
     border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.1),
+        inset 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 .vinyl-record::after {
@@ -853,13 +864,46 @@ main {
     right: 0;
     bottom: 0;
     border-radius: 50%;
-    background: repeating-radial-gradient(
-        circle at center,
-        transparent 0,
-        transparent 5px,
-        rgba(255, 255, 255, 0.1) 5px,
-        rgba(255, 255, 255, 0.1) 7px
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 45%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 55%,
+        transparent 100%
     );
+    animation: shine 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg) perspective(1000px) rotateX(20deg);
+    }
+    to {
+        transform: rotate(360deg) perspective(1000px) rotateX(20deg);
+    }
+}
+
+@keyframes shine {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.vinyl-record:hover {
+    transform: perspective(1000px) rotateX(30deg) scale(1.1);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        inset 0 0 50px rgba(255, 255, 255, 0.15),
+        inset 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.vinyl-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
 }
 
 /* Volume Control Next to Vinyl */
