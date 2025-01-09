@@ -1,3 +1,52 @@
+// Initialize SoundCloud Widget
+let widget;
+let iframeElement = document.querySelector('#soundcloud-iframe');
+let volumeSlider = document.querySelector('.volume-slider');
+let volumeIcon = document.querySelector('.volume-icon');
+let lastVolume = 100;
+
+window.onload = function() {
+    widget = SC.Widget(iframeElement);
+    
+    // Initialize volume control
+    widget.bind(SC.Widget.Events.READY, function() {
+        widget.setVolume(100);
+        
+        // Volume slider event
+        volumeSlider.addEventListener('input', function() {
+            const volume = this.value;
+            widget.setVolume(volume);
+            updateVolumeIcon(volume);
+        });
+
+        // Volume icon click event (mute/unmute)
+        volumeIcon.addEventListener('click', function() {
+            if (volumeSlider.value > 0) {
+                lastVolume = volumeSlider.value;
+                volumeSlider.value = 0;
+                widget.setVolume(0);
+                updateVolumeIcon(0);
+            } else {
+                volumeSlider.value = lastVolume;
+                widget.setVolume(lastVolume);
+                updateVolumeIcon(lastVolume);
+            }
+        });
+    });
+};
+
+// Update volume icon based on volume level
+function updateVolumeIcon(volume) {
+    volumeIcon.className = 'fas';
+    if (volume > 50) {
+        volumeIcon.classList.add('fa-volume-up');
+    } else if (volume > 0) {
+        volumeIcon.classList.add('fa-volume-down');
+    } else {
+        volumeIcon.classList.add('fa-volume-mute');
+    }
+}
+
 // Custom cursor
 const cursor = document.querySelector('.cursor');
 const cursorFollower = document.querySelector('.cursor-follower');
@@ -12,6 +61,16 @@ document.addEventListener('mousemove', (e) => {
     }, 100);
 });
 
+// Mobile menu
+const menuBtn = document.querySelector('.menu-btn');
+const navLinks = document.querySelector('.nav-links');
+const socialLinks = document.querySelector('.social-links');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    socialLinks.classList.toggle('active');
+});
+
 // Hover effect for interactive elements
 document.querySelectorAll('a, button, .music-card').forEach(link => {
     link.addEventListener('mouseenter', () => {
@@ -23,23 +82,6 @@ document.querySelectorAll('a, button, .music-card').forEach(link => {
         cursor.classList.remove('cursor-hover');
         cursorFollower.classList.remove('cursor-hover');
     });
-});
-
-// Mobile menu functionality
-const menuBtn = document.querySelector('.menu-btn');
-const navLinks = document.querySelector('.nav-links');
-let menuOpen = false;
-
-menuBtn.addEventListener('click', () => {
-    if (!menuOpen) {
-        menuBtn.classList.add('open');
-        navLinks.classList.add('active');
-        menuOpen = true;
-    } else {
-        menuBtn.classList.remove('open');
-        navLinks.classList.remove('active');
-        menuOpen = false;
-    }
 });
 
 // Smooth scrolling with offset for header
