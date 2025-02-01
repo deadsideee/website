@@ -67,56 +67,28 @@ nav {
 
 .logo {
     font-family: 'Metal Mania', cursive;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: 6px;
+    letter-spacing: 2px;
     position: relative;
     text-shadow: none;
-    background: linear-gradient(180deg, #fff 60%, #ff0000 100%);
+    background: linear-gradient(180deg, #fff 85%, #ff0000 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 1));
     font-weight: 900;
-    transform: scaleY(2.5) scaleX(0.6);
+    transform: scaleY(3) scaleX(0.4);
     margin-right: 2rem;
     padding: 0.5rem 0;
-}
-
-.logo::first-letter {
-    font-family: initial;
-    font-size: 1.2rem;
-    background: linear-gradient(180deg, #fff 60%, #ff0000 90%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 1));
-    transform: scaleY(1) scaleX(1.2);
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 2px;
-}
-
-.logo::before {
-    content: '💀';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) scaleY(2) scaleX(0.8) rotate(180deg);
-    font-size: 1.8rem;
-    background: linear-gradient(180deg, #fff 60%, #ff0000 90%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    z-index: 2;
 }
 
 .logo::after {
     content: attr(data-text);
     position: absolute;
     left: 0;
-    bottom: -20px;
+    bottom: -5px;
     width: 100%;
     background: linear-gradient(180deg, #ff0000 0%, #990000 100%);
     -webkit-background-clip: text;
@@ -124,29 +96,26 @@ nav {
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 4px rgba(255, 0, 0, 0.5));
     clip-path: polygon(
-        0% 0%, 5% 100%, 8% 30%,
-        11% 100%, 14% 10%, 17% 100%,
-        20% 30%, 23% 100%, 26% 20%,
-        29% 100%, 32% 40%, 35% 100%,
-        38% 30%, 41% 100%, 44% 10%,
-        47% 100%, 50% 30%, 53% 100%,
-        56% 20%, 59% 100%, 62% 40%,
-        65% 100%, 68% 30%, 71% 100%,
-        74% 10%, 77% 100%, 80% 30%,
-        83% 100%, 86% 20%, 89% 100%,
-        92% 40%, 95% 100%, 98% 30%,
+        0% 0%, 3% 100%, 6% 40%,
+        9% 100%, 12% 20%, 15% 100%,
+        18% 40%, 21% 100%, 24% 30%,
+        27% 100%, 30% 50%, 33% 100%,
+        36% 30%, 39% 100%, 42% 20%,
+        45% 100%, 48% 40%, 51% 100%,
+        54% 30%, 57% 100%, 60% 50%,
+        63% 100%, 66% 40%, 69% 100%,
+        72% 20%, 75% 100%, 78% 40%,
+        81% 100%, 84% 30%, 87% 100%,
+        90% 50%, 93% 100%, 96% 40%,
         100% 0%
     );
-    transform: scaleY(0.5) scaleX(0.6);
+    transform: scaleY(0.4) scaleX(0.4) translateY(-10px);
 }
 
+/* Remove the bat animations and first-letter styles */
 .logo::before,
-.logo::after {
-    content: '🦇';
-    position: absolute;
-    font-size: 1rem;
-    opacity: 0;
-    pointer-events: none;
+.logo::first-letter {
+    display: none;
 }
 
 .logo::before {
