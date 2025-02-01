@@ -66,21 +66,20 @@ nav {
 }
 
 .logo {
-    font-family: 'MedievalSharp', cursive;
-    font-size: 1.2rem;
+    font-family: 'Metal Mania', cursive;
+    font-size: 1.5rem;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 8px;
     position: relative;
     text-shadow: none;
-    background: linear-gradient(180deg, #fff 75%, #ff0000 90%);
+    background: linear-gradient(180deg, #fff 60%, #ff0000 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 1));
     font-weight: 900;
     transform: scaleY(2.5) scaleX(0.6);
-    -webkit-text-stroke: 0.7px #fff;
     margin-right: 2rem;
     padding: 0.5rem 0;
 }
@@ -117,15 +116,25 @@ nav {
     content: attr(data-text);
     position: absolute;
     left: 0;
-    top: 0;
-    background: linear-gradient(180deg, transparent 75%, #ff0000 90%);
+    bottom: -20px;
+    width: 100%;
+    background: linear-gradient(180deg, #ff0000 0%, #990000 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 1;
-    z-index: -1;
-    filter: none;
-    transform: translateY(1px) scaleY(2.5) scaleX(0.6);
+    filter: drop-shadow(0 2px 4px rgba(255, 0, 0, 0.5));
+    clip-path: polygon(
+        0% 0%, 8% 100%, 12% 30%,
+        16% 100%, 20% 10%, 24% 100%,
+        28% 30%, 32% 100%, 36% 20%,
+        40% 100%, 44% 40%, 48% 100%,
+        52% 30%, 56% 100%, 60% 10%,
+        64% 100%, 68% 30%, 72% 100%,
+        76% 20%, 80% 100%, 84% 40%,
+        88% 100%, 92% 30%, 96% 100%,
+        100% 0%
+    );
+    transform: scaleY(0.5) scaleX(0.6);
 }
 
 .logo::before,
@@ -1013,4 +1022,4 @@ main {
     }
 } 
 
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap'); 
